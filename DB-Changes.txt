@@ -1,0 +1,29 @@
+Name : Nilesh
+Date : 27-OCT-2018
+
+/**** Create Database ****/
+
+CREATE DATABASE roulettecasino;
+
+/********* Create User  table ****/
+
+CREATE TABLE `User` (					
+	`UserId` bigint NOT NULL AUTO_INCREMENT,				
+	`Email` varchar(1000) NULL,				
+	`MobileNo` varchar(255) NULL,	
+	`Password` varchar(500) NULL,	
+	`TokenNo`  text NULL,	
+	`IsActive` bit NULL,	
+	`IsDeleted` bit NULL,	
+	`DeletedOn` datetime NULL,	
+	`CreatedBy` bigint NULL,	
+	` ` datetime NULL,
+	`UpdatedBy` bigint NULL,			
+	`UpdatedOn` datetime NULL,	
+	PRIMARY KEY (`UserId`)				
+);					
+
+/******** Add index to IsDeleted columns ****/
+
+CREATE INDEX `idx_user_isdeleted` ON `User` (IsDeleted);
+
