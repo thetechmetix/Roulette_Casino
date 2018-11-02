@@ -1,6 +1,6 @@
 const db = require('../config/dbconnection');
 
-let Provider = {    
+let User = {    
     getUsers: function (callback) {
         return db.query(`SELECT u.* FROM \`User\` u WHERE IFNULL(u.IsDeleted,0) = 0`, callback);
     },    
@@ -32,8 +32,8 @@ let Provider = {
                                 \`Email\` = ?,
                                 \`MobileNo\` = ?,
                                 \`IsActive\` = ?,
-                                \`CreatedBy\` = ?,
-                                \`CreatedOn\` = NOW()
+                                \`UpdatedBy\` = ?,
+                                \`UpdatedOn\` = NOW()
                             WHERE IFNULL(IsDeleted,0) = 0 
                                 AND \`UserId\` = ? 
                         `,
@@ -41,10 +41,10 @@ let Provider = {
                 User.Email,
                 User.MobileNo,
                 User.IsActive,
-                User.CreatedBy,
+                User.UpdatedBy,
                 id
             ], callback);
     }
 }
 
-module.exports = Provider;
+module.exports = User;

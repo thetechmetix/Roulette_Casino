@@ -17,7 +17,7 @@ CREATE TABLE `User` (
 	`IsDeleted` bit NULL,	
 	`DeletedOn` datetime NULL,	
 	`CreatedBy` bigint NULL,	
-	` ` datetime NULL,
+	`CreatedOn` datetime NULL,
 	`UpdatedBy` bigint NULL,			
 	`UpdatedOn` datetime NULL,	
 	PRIMARY KEY (`UserId`)				
@@ -27,3 +27,78 @@ CREATE TABLE `User` (
 
 CREATE INDEX `idx_user_isdeleted` ON `User` (IsDeleted);
 
+
+
+/***************************************************************************************/
+
+Name : Nilesh
+Date : 27-OCT-2018
+
+/********* Create Chips  table ****/
+
+CREATE TABLE `Chips` (					
+	`ChipsId` bigint NOT NULL AUTO_INCREMENT,				
+	`UserId` bigint NULL,				
+	`Balance` double NULL,		
+	`IsActive` bit NULL,	
+	`IsDeleted` bit NULL,	
+	`DeletedOn` datetime NULL,	
+	`CreatedBy` bigint NULL,	
+	`CreatedOn` datetime NULL,
+	`UpdatedBy` bigint NULL,			
+	`UpdatedOn` datetime NULL,	
+	PRIMARY KEY (`ChipsId`)				
+);					
+
+/******** Add index to IsDeleted columns ****/
+
+CREATE INDEX `idx_chips_isdeleted` ON `Chips` (IsDeleted);
+
+
+/********* Create Games  table ****/
+
+CREATE TABLE `Games` (					
+	`GameId` bigint NOT NULL AUTO_INCREMENT,				
+	`Name` varchar(1000) NULL,				
+	`Description` text NULL,	
+	`Tutorial` varchar(1000) NULL,	
+	`UserId` bigint NULL,					
+	`IsActive` bit NULL,	
+	`IsDeleted` bit NULL,	
+	`DeletedOn` datetime NULL,	
+	`CreatedBy` bigint NULL,	
+	`CreatedOn` datetime NULL,
+	`UpdatedBy` bigint NULL,			
+	`UpdatedOn` datetime NULL,	
+	PRIMARY KEY (`GameId`)				
+);					
+
+/******** Add index to IsDeleted columns ****/
+
+CREATE INDEX `idx_games_isdeleted` ON `Game` (IsDeleted);
+
+/********* Create Transaction  table ****/
+
+CREATE TABLE `Transaction` (					
+	`TransactionId` bigint NOT NULL AUTO_INCREMENT,				
+	`UserId` bigint NULL,		
+	`GameId` bigint NULL,		
+	`ChipsId` bigint NULL,			
+	`Balance` double NULL,	
+	`CreditedAmount` double NULL,	
+	`DebitedAmount` double NULL,				
+	`Date` datetime NULL,
+	`Transaction` double NULL,	
+	`IsActive` bit NULL,	
+	`IsDeleted` bit NULL,	
+	`DeletedOn` datetime NULL,	
+	`CreatedBy` bigint NULL,	
+	`CreatedOn` datetime NULL,
+	`UpdatedBy` bigint NULL,			
+	`UpdatedOn` datetime NULL,	
+	PRIMARY KEY (`TransactionId`)				
+);					
+
+/******** Add index to IsDeleted columns ****/
+
+CREATE INDEX `idx_transaction_isdeleted` ON `Transaction` (IsDeleted);
