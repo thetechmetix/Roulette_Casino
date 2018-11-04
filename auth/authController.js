@@ -34,7 +34,6 @@ let auth = function (req, res) {
                                 user.UserId
                         ], function (rq, rp, nt) {
 
-                            debugger;
                             res.json({
                                 success: true,
                                 access_token: token,

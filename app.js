@@ -13,7 +13,9 @@ const authController = require('./auth/authController');
 const verifytoken = require('./auth/verifytoken');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
-const providerRouter = require('./routes/provider');
+const chipsRouter = require('./routes/chips');
+const gamesRouter = require('./routes/games');
+const transactionRouter = require('./routes/transaction');
 
 const app = express();
 const router = express.Router();
@@ -44,7 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/api/user', verifytoken, userRouter);
-//app.use('/api/provider', providerRouter);
+app.use('/api/chips', verifytoken, chipsRouter);
+app.use('/api/games', verifytoken, gamesRouter);
+app.use('/api/transaction', verifytoken, transactionRouter);
 app.post('/api/authenticate', authController);
 
 //catch 404 and forward to error handler
@@ -70,3 +74,4 @@ const server = app.listen(port, function () {
 });
 
 module.exports = app;
+

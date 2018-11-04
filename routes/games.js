@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const Game = require('../models/games');
 
-
-//Get Users
-router.get('/GetUsers', function (req, res, next) {
-    User.getUsers(function (err, rows) {
+//Get Game
+router.get('/GetGames', function (req, res, next) {        
+    Game.getGames(function (err, rows) {
         if (err) {
             res.json({ success: false, message: err });
         } else {
@@ -14,10 +13,10 @@ router.get('/GetUsers', function (req, res, next) {
     });
 });
 
-//Get User By Id
+//Get Game By Id
 router.get('/:id?', function (req, res, next) {    
     if (req.params.id) {
-        User.getUserById(req.params.id, function (err, rows) {
+        Game.getGamesById(req.params.id, function (err, rows) {
             if (err) {
                 res.json({ success: false, message: err });
             } else {
@@ -25,24 +24,13 @@ router.get('/:id?', function (req, res, next) {
             }
         });
     } else {
-        res.json({ success: false, message: "User id parameter missing." })
+        res.json({ success: false, message: "Game id parameter missing." })
     }
 });
 
-//Logout User
-router.post('/Logout', function (req, res, next) {    
-    User.logoutUser(req.body, function (err, count) {        
-        if (err) {
-            res.json({ success: false, message: err });
-        } else {
-            res.json({ success: true, data: count });
-        }
-    });
-});
-
-//Create New User
+//Create New Game
 router.post('/', function (req, res, next) {    
-    User.addUser(req.body, function (err, count) {        
+    Game.addGames(req.body, function (err, count) {
         if (err) {
             res.json({ success: false, message: err });
         } else {
@@ -51,9 +39,9 @@ router.post('/', function (req, res, next) {
     });
 });
 
-//Delete User By Id
+//Delete Game By Id
 router.delete('/:id', function (req, res, next) {    
-    User.deleteUser(req.params.id, function (err, count) {
+    Game.deleteGames(req.params.id, function (err, count) {
         if (err) {
             res.json({ success: false, message: err });
         } else {
@@ -62,9 +50,9 @@ router.delete('/:id', function (req, res, next) {
     });
 });
 
-//Update User By Id
+//Update Game By Id
 router.put('/:id', function (req, res, next) {    
-    User.updateUser(req.params.id, req.body, function (err, rows) {
+    Game.updateGames(req.params.id, req.body, function (err, rows) {
         if (err) {
             res.json({ success: false, message: err });
         } else {

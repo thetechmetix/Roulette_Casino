@@ -13,8 +13,8 @@ CREATE TABLE `User` (
 	`MobileNo` varchar(255) NULL,	
 	`Password` varchar(500) NULL,	
 	`TokenNo`  text NULL,	
-	`IsActive` bit NULL,	
-	`IsDeleted` bit NULL,	
+	`IsActive` tinyint(1) NULL,	
+	`IsDeleted` tinyint(1) NULL,	
 	`DeletedOn` datetime NULL,	
 	`CreatedBy` bigint NULL,	
 	`CreatedOn` datetime NULL,
@@ -40,8 +40,8 @@ CREATE TABLE `Chips` (
 	`ChipsId` bigint NOT NULL AUTO_INCREMENT,				
 	`UserId` bigint NULL,				
 	`Balance` double NULL,		
-	`IsActive` bit NULL,	
-	`IsDeleted` bit NULL,	
+	`IsActive` tinyint(1) NULL,	
+	`IsDeleted` tinyint(1) NULL,	
 	`DeletedOn` datetime NULL,	
 	`CreatedBy` bigint NULL,	
 	`CreatedOn` datetime NULL,
@@ -63,8 +63,8 @@ CREATE TABLE `Games` (
 	`Description` text NULL,	
 	`Tutorial` varchar(1000) NULL,	
 	`UserId` bigint NULL,					
-	`IsActive` bit NULL,	
-	`IsDeleted` bit NULL,	
+	`IsActive` tinyint(1) NULL,	
+	`IsDeleted` tinyint(1) NULL,	
 	`DeletedOn` datetime NULL,	
 	`CreatedBy` bigint NULL,	
 	`CreatedOn` datetime NULL,
@@ -75,7 +75,7 @@ CREATE TABLE `Games` (
 
 /******** Add index to IsDeleted columns ****/
 
-CREATE INDEX `idx_games_isdeleted` ON `Game` (IsDeleted);
+CREATE INDEX `idx_games_isdeleted` ON `Games` (IsDeleted);
 
 /********* Create Transaction  table ****/
 
@@ -89,8 +89,8 @@ CREATE TABLE `Transaction` (
 	`DebitedAmount` double NULL,				
 	`Date` datetime NULL,
 	`Transaction` double NULL,	
-	`IsActive` bit NULL,	
-	`IsDeleted` bit NULL,	
+	`IsActive` tinyint(1) NULL,	
+	`IsDeleted` tinyint(1) NULL,	
 	`DeletedOn` datetime NULL,	
 	`CreatedBy` bigint NULL,	
 	`CreatedOn` datetime NULL,
